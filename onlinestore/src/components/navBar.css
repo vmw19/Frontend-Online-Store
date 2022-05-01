@@ -1,0 +1,16 @@
+div {
+    border: 1px solid rgb(241, 15, 166);
+}
+
+h1 {
+    text-align: center;
+    color: aquamarine;
+    font-size: 38px;
+}
+
+a.navbar-brand {
+    font-style: italic;
+    color:pink; /*This is not working...ughhh*/
+    font-weight: 900;
+    font-size: 35px;
+}

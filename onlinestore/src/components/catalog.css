@@ -1,0 +1,11 @@
+.catalog .product {
+    display: inline-block;
+    border: 1px solid palevioletred;
+    margin-bottom: 10px;
+    background-color: rgb(236, 154, 95);
+}
+
+h4 {
+    color: palevioletred;
+    font-size: 28px;
+}

@@ -1,0 +1,13 @@
+.product {
+    border: 1px solid darkblue;
+    margin-bottom: 10px;
+    background-color: seashell;
+    border-radius: 8px;
+    width: 290px;
+    margin-right: 10px;
+    height: 350px;
+}
+.product-img{
+    width:240px;
+    height:270px;
+}
