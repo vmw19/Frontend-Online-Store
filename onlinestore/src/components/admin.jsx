@@ -3,8 +3,10 @@ import"./admin.css";
 import{useState} from 'react';
 
 const Admin = () => {
-    const[product, setProduct]= useState({});
-    const[coupon, setCoupon]= useState({});
+    const[product, setProduct] = useState({});
+    const[coupon, setCoupon] = useState({});
+    const[errorVisible, setErrorVisible] = useState({false});
+    const[errorMessage, setErrorMessage] = useState({""});
     
     const handleTextChange = (e) => {
       let copy = {...product};
@@ -20,31 +22,34 @@ const Admin = () => {
     };
     setProduct(copy);
     };
-
-    const handlesaveProduct = () =>{
+    const showError = (text => {
+        setErrorMessage(text);
+        setErrorMessage(true);
+    }
+    const handleSaveProduct = () =>{
         console.log(product);
         //validations
-        if(product.title.length <5){
-            alert("Error, Title should have at least 5 chara");
+        if(product.title.length < 5){
+            showError ("Error, Title should have 5 charac");
             return;
         }
 
         if(!product.image) {
-            alert("Error, Image can not be empty");
+            showError("Error, Image can not be empty");
             return;
         }
         if(!product.category) {
-            alert("Error, Image can not be empty");
+            showError("Error, Image can not be empty");
             return;
         }
         let savedProcuct = {...product};
         savedProduct.price = ParseFlot(product.price);
 
         if (!savedProduct.price || savedProduct.price<1){
-            alert("Error, price should be greater than $1");
+            showError("Error, price should be greater than $1");
             return;
         }
-
+        setErrorVisible(false);
         //send product to server
         console.log(SavedProduct);
     };
@@ -66,12 +71,16 @@ const Admin = () => {
             alert("Error, savedCoupon code > = 5 characters");
             return;
             }
+        
+        setErrorVisible(false);
          //send coupon to server
          console.log("Saving coupon");
     };
    
     return (
         <div className="admin-page">
+            {errorVisible?<div className="alert-alert-danger">{errorMessage}</div> : null}
+
         <div className="sections-container"> 
         <section className="sec-products">
             <h4> Manage Products</h4>
